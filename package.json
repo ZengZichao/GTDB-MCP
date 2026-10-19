@@ -1,0 +1,49 @@
+{
+  "name": "gtdb-mcp",
+  "version": "0.1.0",
+  "description": "A Model Context Protocol (MCP) server for querying the Genome Taxonomy Database (GTDB) - providing taxonomy lookup, genome search, phylogenetic tree navigation, and comparative analysis for bacterial and archaeal genomes.",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "bin": {
+    "gtdb-mcp": "dist/index.js"
+  },
+  "scripts": {
+    "build": "tsc",
+    "start": "node dist/index.js",
+    "dev": "tsc --watch",
+    "prepare": "npm run build",
+    "clean": "rimraf dist"
+  },
+  "keywords": [
+    "mcp",
+    "gtdb",
+    "taxonomy",
+    "genomics",
+    "bacteria",
+    "archaea",
+    "bioinformatics",
+    "model-context-protocol",
+    "llm",
+    "ai"
+  ],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.0.0",
+    "zod": "^3.23.8"
+  },
+  "devDependencies": {
+    "@types/node": "^20.14.0",
+    "typescript": "^5.5.0",
+    "rimraf": "^5.0.0"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "files": [
+    "dist",
+    "README.md",
+    "README_CN.md",
+    "LICENSE"
+  ]
+}
