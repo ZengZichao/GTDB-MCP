@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="GTDB-MCP: A Model Context Protocol (MCP) server for the Genome Taxonomy Database (GTDB), enabling LLM-powered applications to query bacterial and archaeal taxonomy data.">
+    <meta name="author" content="GTDB-MCP Contributors">
+    <meta property="og:title" content="GTDB-MCP — MCP Server for the Genome Taxonomy Database">
+    <meta property="og:description" content="A Model Context Protocol server providing seamless access to GTDB taxonomy, genome search, phylogenetic tree navigation, and comparative analysis.">
+    <meta property="og:type" content="website">
+    <title>GTDB-MCP — MCP Server for the Genome Taxonomy Database</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,400;0,600;0,700;1,400&family=Source+Sans+3:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./assets/style.css">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🧬</text></svg>">
+</head>
+<body>
+
+<!-- Navigation -->
+<nav id="nav">
+    <div class="nav-inner">
+        <a href="#top" class="nav-brand">GTDB-MCP</a>
+        <div class="nav-links">
+            <a href="#overview">Overview</a>
+            <a href="#features">Features</a>
+            <a href="#tools">Tools</a>
+            <a href="#installation">Installation</a>
+            <a href="#usage">Usage</a>
+            <a href="#about">About</a>
+            <a href="https://github.com/ZengZichao/GTDB-MCP" class="nav-gh" target="_blank" rel="noopener">GitHub ↗</a>
+        </div>
+    </div>
+</nav>
+
+<!-- Hero -->
+<header id="top" class="hero">
+    <div class="container">
+        <p class="eyebrow">Model Context Protocol &middot; Bioinformatics</p>
+        <h1>GTDB-MCP</h1>
+        <p class="hero-sub">A Model Context Protocol server for the<br>Genome Taxonomy Database (GTDB)</p>
+        <div class="hero-meta">
+            <span class="badge">Version 0.1.0</span>
+            <span class="badge">GTDB R220</span>
+            <span class="badge">MIT License</span>
+            <span class="badge">TypeScript</span>
+        </div>
+        <div class="hero-cta">
+            <a href="https://github.com/ZengZichao/GTDB-MCP" class="btn btn-primary" target="_blank" rel="noopener">View on GitHub</a>
+            <a href="#installation" class="btn btn-secondary">Get Started</a>
+        </div>
+    </div>
+</header>
+
+<!-- Disclaimer -->
+<div class="disclaimer">
+    <div class="container">
+        <p><strong>Disclaimer:</strong> This is an <em>unofficial, third-party</em> community implementation and is not affiliated with, endorsed by, or associated with the <a href="https://gtdb.ecogenomic.org/" target="_blank" rel="noopener">GTDB team</a> or <a href="https://www.anthropic.com/" target="_blank" rel="noopener">Anthropic</a>. GTDB is developed by the Australian Centre for Ecogenomics (ACE) at the University of Queensland.</p>
+    </div>
+</div>
+
+<!-- Overview -->
+<section id="overview" class="section">
+    <div class="container">
+        <h2 class="section-title">Overview</h2>
+        <div class="section-content">
+            <p class="lead">
+                GTDB-MCP is a Model Context Protocol (MCP) server that provides seamless access to the
+                <a href="https://gtdb.ecogenomic.org/" target="_blank" rel="noopener">Genome Taxonomy Database (GTDB)</a>.
+                It enables LLM-powered applications to query bacterial and archaeal taxonomy data,
+                search for genomes, navigate phylogenetic trees, and perform comparative analyses.
+            </p>
+            <p>
+                GTDB is a genome-based taxonomy database that provides standardized taxonomic classifications
+                for bacterial and archaeal genomes based on over 120 conserved marker genes.
+                This MCP server makes GTDB data accessible to AI assistants and other MCP-compatible tools.
+            </p>
+        </div>
+    </div>
+</section>
+
+<!-- Key Highlights -->
+<section class="section section-alt">
+    <div class="container">
+        <h2 class="section-title">Key Highlights</h2>
+        <div class="highlights-grid">
+            <div class="highlight-card">
+                <div class="highlight-icon">⚙</div>
+                <h3>Zero-config Startup</h3>
+                <p>Ships with a curated built-in reference dataset covering major bacterial and archaeal taxa. No external data required to get started.</p>
+            </div>
+            <div class="highlight-card">
+                <div class="highlight-icon">📊</div>
+                <h3>Full Database Support</h3>
+                <p>Can load complete GTDB TSV data files for comprehensive queries against the entire release database.</p>
+            </div>
+            <div class="highlight-card">
+                <div class="highlight-icon">🔧</div>
+                <h3>12 Powerful Tools</h3>
+                <p>Search, taxonomy lookup, genome queries, tree navigation, and comparative analysis — all exposed as MCP tools.</p>
+            </div>
+            <div class="highlight-card">
+                <div class="highlight-icon">🔒</div>
+                <h3>Type-safe</h3>
+                <p>Written in TypeScript with full type definitions. MCP-compliant, following the Model Context Protocol specification.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Features -->
+<section id="features" class="section">
+    <div class="container">
+        <h2 class="section-title">Features</h2>
+        <div class="features-list">
+            <div class="feature-group">
+                <h3><span class="feature-emoji">🔍</span> Search &amp; Discovery</h3>
+                <ul>
+                    <li>Search for taxa or genomes by name (partial matching supported)</li>
+                    <li>Browse taxonomy by rank (phylum, class, order, family, genus, species)</li>
+                    <li>List all phyla for bacteria or archaea</li>
+                </ul>
+            </div>
+            <div class="feature-group">
+                <h3><span class="feature-emoji">🌿</span> Taxonomy Navigation</h3>
+                <ul>
+                    <li>Get complete taxonomic lineages (domain → species)</li>
+                    <li>Retrieve taxon summaries with genome counts and child taxa</li>
+                    <li>Navigate the taxonomy tree (get children of any taxon)</li>
+                    <li>Find the phylogenetic path between two taxa</li>
+                </ul>
+            </div>
+            <div class="feature-group">
+                <h3><span class="feature-emoji">🧬</span> Genome Information</h3>
+                <ul>
+                    <li>Look up genome metadata (size, GC content, quality, type strain status)</li>
+                    <li>Find all genomes for a given species</li>
+                    <li>Find all genomes under any taxonomic group</li>
+                </ul>
+            </div>
+            <div class="feature-group">
+                <h3><span class="feature-emoji">📊</span> Comparison &amp; Analysis</h3>
+                <ul>
+                    <li>Compare two genomes taxonomically (shared lineage, LCA, differences)</li>
+                    <li>Get phylogenetic tree paths between taxa</li>
+                    <li>Access database-wide statistics</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Tools Table -->
+<section id="tools" class="section section-alt">
+    <div class="container">
+        <h2 class="section-title">Available Tools</h2>
+        <div class="table-wrap">
+            <table class="tools-table">
+                <thead>
+                    <tr>
+                        <th>Tool</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td><code>search</code></td><td>Search for taxa or genomes by name</td></tr>
+                    <tr><td><code>get_taxonomy</code></td><td>Get the full taxonomic lineage of a taxon or genome</td></tr>
+                    <tr><td><code>get_taxon_summary</code></td><td>Get a comprehensive summary of a taxonomic group</td></tr>
+                    <tr><td><code>get_children</code></td><td>Get direct child taxa of a given taxon</td></tr>
+                    <tr><td><code>list_phyla</code></td><td>List all bacterial or archaeal phyla</td></tr>
+                    <tr><td><code>list_taxa_by_rank</code></td><td>List all taxa at a specific rank</td></tr>
+                    <tr><td><code>get_genome</code></td><td>Get detailed genome information by GTDB ID</td></tr>
+                    <tr><td><code>get_genomes_for_species</code></td><td>Get all genomes for a species</td></tr>
+                    <tr><td><code>get_genomes_for_taxon</code></td><td>Get all genomes under a taxonomic group</td></tr>
+                    <tr><td><code>compare_genomes</code></td><td>Compare two genomes taxonomically</td></tr>
+                    <tr><td><code>get_tree_path</code></td><td>Get the phylogenetic path between two taxa</td></tr>
+                    <tr><td><code>get_database_stats</code></td><td>Get GTDB database statistics</td></tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</section>
+
+<!-- Installation -->
+<section id="installation" class="section">
+    <div class="container">
+        <h2 class="section-title">Installation</h2>
+        <div class="section-content">
+            <h3>Prerequisites</h3>
+            <ul>
+                <li><strong>Node.js</strong> &ge; 18.0.0</li>
+                <li><strong>npm</strong> or <strong>yarn</strong></li>
+            </ul>
+
+            <h3>From Source</h3>
+            <div class="code-block">
+                <div class="code-header"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="code-lang">bash</span></div>
+<pre><code>git clone https://github.com/ZengZichao/GTDB-MCP.git
+cd GTDB-MCP
+npm install
+npm run build</code></pre>
+            </div>
+
+            <h3>Configuration</h3>
+            <p>The server works out of the box with a built-in reference dataset. For comprehensive queries, download GTDB data files from <a href="https://gtdb.ecogenomic.org/downloads" target="_blank" rel="noopener">gtdb.ecogenomic.org/downloads</a> and set the <code>GTDB_DATA_DIR</code> environment variable.</p>
+            <div class="code-block">
+                <div class="code-header"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="code-lang">bash</span></div>
+<pre><code>export GTDB_DATA_DIR=/path/to/gtdb/data
+node dist/index.js</code></pre>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Usage -->
+<section id="usage" class="section section-alt">
+    <div class="container">
+        <h2 class="section-title">Usage &amp; Integration</h2>
+        <div class="section-content">
+            <h3>Integration with Claude Desktop</h3>
+            <p>Add the server to your <code>claude_desktop_config.json</code>:</p>
+            <div class="code-block">
+                <div class="code-header"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="code-lang">json</span></div>
+<pre><code>{
+  "mcpServers": {
+    "gtdb": {
+      "command": "node",
+      "args": ["/absolute/path/to/GTDB-MCP/dist/index.js"]
+    }
+  }
+}</code></pre>
+            </div>
+
+            <h3>Programmatic API</h3>
+            <div class="code-block">
+                <div class="code-header"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="code-lang">typescript</span></div>
+<pre><code>import { GTDBClient } from "gtdb-mcp";
+
+const client = new GTDBClient();
+
+// Search for organisms
+const results = client.search("Bacillus");
+
+// Get taxonomy
+const lineage = client.getLineage("Escherichia coli");
+
+// Get taxon summary
+const summary = client.getTaxonSummary("Enterobacteriaceae");
+
+// Compare genomes
+const comparison = client.compareGenomes("GCF_000005845.2", "GCF_000007865.2");</code></pre>
+            </div>
+
+            <h3>Example Queries</h3>
+            <div class="query-cards">
+                <div class="query-card">"What is the taxonomy of <em>Escherichia coli</em>?"</div>
+                <div class="query-card">"List all bacterial phyla in GTDB"</div>
+                <div class="query-card">"Compare the genomes GCF_000005845.2 and GCF_000007865.2"</div>
+                <div class="query-card">"What are the child taxa of Bacillales?"</div>
+                <div class="query-card">"Find all genomes in the family Enterobacteriaceae"</div>
+                <div class="query-card">"Show me the phylogenetic path from <em>Bacillus</em> to <em>Escherichia</em>"</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Taxonomy Ranks -->
+<section class="section">
+    <div class="container">
+        <h2 class="section-title">Taxonomic Ranks</h2>
+        <div class="section-content">
+            <p>GTDB follows a seven-rank hierarchy. The server provides full navigation across all levels:</p>
+            <div class="ranks-flow">
+                <span class="rank-chip">Domain<br><small>d__</small></span>
+                <span class="rank-arrow">→</span>
+                <span class="rank-chip">Phylum<br><small>p__</small></span>
+                <span class="rank-arrow">→</span>
+                <span class="rank-chip">Class<br><small>c__</small></span>
+                <span class="rank-arrow">→</span>
+                <span class="rank-chip">Order<br><small>o__</small></span>
+                <span class="rank-arrow">→</span>
+                <span class="rank-chip">Family<br><small>f__</small></span>
+                <span class="rank-arrow">→</span>
+                <span class="rank-chip">Genus<br><small>g__</small></span>
+                <span class="rank-arrow">→</span>
+                <span class="rank-chip">Species<br><small>s__</small></span>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- About / Data Sources -->
+<section id="about" class="section section-alt">
+    <div class="container">
+        <h2 class="section-title">About &amp; Acknowledgments</h2>
+        <div class="section-content">
+            <div class="about-grid">
+                <div class="about-item">
+                    <h3>Data Sources</h3>
+                    <p>GTDB uses NCBI assembly accessions as genome identifiers (<code>GCF_</code> RefSeq, <code>GCA_</code> GenBank, <code>UBA_</code> Unclassified Binned Assemblies, <code>G_</code> GTDB-assigned).</p>
+                </div>
+                <div class="about-item">
+                    <h3>License</h3>
+                    <p>This project is licensed under the MIT License. All GTDB data and trademarks belong to their respective owners.</p>
+                </div>
+                <div class="about-item">
+                    <h3>GTDB</h3>
+                    <p><a href="https://gtdb.ecogenomic.org/" target="_blank" rel="noopener">Genome Taxonomy Database</a> — Parks et al., Nature Biotechnology 2018, 2020, 2022. Developed by ACE at the University of Queensland.</p>
+                </div>
+                <div class="about-item">
+                    <h3>MCP</h3>
+                    <p><a href="https://modelcontextprotocol.io/" target="_blank" rel="noopener">Model Context Protocol</a> — An open protocol by Anthropic for standardizing communication between LLMs and external tools.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Footer -->
+<footer class="footer">
+    <div class="container">
+        <div class="footer-inner">
+            <div class="footer-left">
+                <p class="footer-title">GTDB-MCP</p>
+                <p class="footer-sub">An unofficial MCP server for the Genome Taxonomy Database</p>
+            </div>
+            <div class="footer-right">
+                <a href="https://github.com/ZengZichao/GTDB-MCP" target="_blank" rel="noopener">GitHub ↗</a>
+                <a href="https://gtdb.ecogenomic.org/" target="_blank" rel="noopener">GTDB ↗</a>
+                <a href="https://modelcontextprotocol.io/" target="_blank" rel="noopener">MCP ↗</a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>Version 0.1.0 &middot; GTDB R220 (2024-04-17) &middot; MIT License &middot; &copy; 2024 GTDB-MCP Contributors</p>
+        </div>
+    </div>
+</footer>
+
+<script src="./assets/main.js"></script>
+</body>
+</html>
